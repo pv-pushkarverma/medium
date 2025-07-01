@@ -3,7 +3,7 @@ import { InputBox } from "./InputBox"
 import { useState } from "react"
 import type { SignupInput } from "@pushkar_verma/medium-common"
 import axios from "axios"
-import { BACKEND_URL } from '../../config.ts'
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Auth = ({ type }: {type: 'signin' | 'signup'}) => {
     const navigate = useNavigate();
