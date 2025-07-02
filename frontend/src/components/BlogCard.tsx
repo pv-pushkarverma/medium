@@ -28,7 +28,7 @@ export const BlogCard = ({ id, authorName, title, content, publishedDate }: Blog
             </div>
 
             <div className="pb-4 font-light">
-                { content.length>100 ?  content.slice(0,97) + '...' : content}
+                { content.length>100 ?  content.slice(0,140) + '...' : content}
             </div>
 
         </div>

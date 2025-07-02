@@ -1,6 +1,7 @@
 import { Appbar } from "../components/Appbar"
 import { BlogCard } from "../components/BlogCard"
 import { useBlogs } from "../hooks"
+import { stripHtml } from "../utils/htmlStrip";
 
 export const Blogs = () => {
     const { loading, blogs } = useBlogs();
@@ -23,7 +24,7 @@ export const Blogs = () => {
                     title={ blog.title}
                     authorName={ blog.author.name}
                     publishedDate="1 July 2025"
-                    content={ blog.content} />
+                    content={ stripHtml(blog.content)} />
                 }) }
             </div>
         </div>

@@ -1,4 +1,5 @@
 import type { Blog } from "../hooks"
+import DOMPurify from "dompurify"
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
     return <div className="flex justify-center">
@@ -7,7 +8,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
             <div className="col-span-4">
                 <div className="text-5xl font-bold">{ blog.title }</div>
                 <div className="mt-2 text-slate-500">Posted on 1 July 2025</div>
-                <div className="mt-5 text-gray-600">{ blog.content }</div>
+                <div className="mt-5 text-gray-600 prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}></div>
             </div>
 
             <div className="col-span-1">
