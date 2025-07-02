@@ -3,6 +3,7 @@ import { InputBox } from "./InputBox"
 import { useState } from "react"
 import type { SignupInput } from "@pushkar_verma/medium-common"
 import axios from "axios"
+import { toast } from "react-toastify"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Auth = ({ type }: {type: 'signin' | 'signup'}) => {
@@ -19,10 +20,11 @@ export const Auth = ({ type }: {type: 'signin' | 'signup'}) => {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/${ type === 'signup' ? 'signup' : 'signin'}`,postInputs);
             const jwt = response.data;
             localStorage.setItem('token',jwt.token);
+            const text = type === 'signin' ? 'Signin' : 'Signup'
+            toast.success(`${text} successfull`)
             navigate('/blogs')
-        } catch (e) {
-            alert(`Error while ${ type === 'signup' ? 'signing up' : 'signing in'}`)
-            console.log(e)
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : String(error))
         }
     }
 

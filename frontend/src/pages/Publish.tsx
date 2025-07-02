@@ -3,10 +3,12 @@ import { useState } from "react"
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 import { Appbar } from "../components/Appbar";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const Publish = () => {
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
+    const [ publishing, setPublishing ] = useState(false);
     const navigate = useNavigate();
 
     return <div>
@@ -40,16 +42,30 @@ export const Publish = () => {
             </div>
 
             <button className="bg-blue-500 p-2 rounded-md text-white px-5 cursor-pointer" onClick={ async() => {
-                const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
-                    title,
-                    content:description
-                }, {
-                    headers:{
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                try {
+                    if(publishing){
+                        return toast.loading('Publishing')
                     }
+                    setPublishing(true)
+                    const response = await axios.post(`${BACKEND_URL}/api/v1/blog`, {
+                        title,
+                        content:description
+                    }, {
+                        headers:{
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        }
+                    })
+
+                    if(response){
+                        toast.success('Blog Published Successfully')
+                        setPublishing(false)
+                        navigate(`/blog/${response.data.id}`)
+                    } else {
+                        toast.error('Error while publishing')
+                    }
+                } catch (error) {
+                    toast.error(error instanceof Error ? error.message : String(error))
                 }
-            )
-            navigate(`/blog/${response.data.id}`)
             }}>Publish</button>
         </div>
     </div>

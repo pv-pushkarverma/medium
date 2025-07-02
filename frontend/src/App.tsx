@@ -6,11 +6,13 @@ import { Blog } from './pages/Blog'
 import { Blogs } from './pages/Blogs'
 import { Publish } from './pages/Publish'
 import { Home } from './pages/Home'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
   return (
     <>
+      <ToastContainer/>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={ <Home/> } />;
