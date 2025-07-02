@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import homeImage from "../../public/assets/Home-Image.webp";
 
 export const Home = () => {
     return <div className="bg-wild-sand-50 h-screen flex flex-col">
@@ -27,7 +28,7 @@ export const Home = () => {
                 </div>
             </div>
             <div>
-                <img src="src/assets/Home-Image.webp" alt="" 
+                <img src={homeImage} alt="" 
                 className="w-md h-md"/>
             </div>
         </div>
