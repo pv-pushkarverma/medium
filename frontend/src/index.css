@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme{
+    --color-wild-sand-50:  #f3f4f6;
+    --color-wild-sand-100: #edeef1;
+    --color-wild-sand-200: #d7dbe0;
+    --color-wild-sand-300: #b3bbc6;
+    --color-wild-sand-400: #8a96a6;
+    --color-wild-sand-500: #6c798b;
+    --color-wild-sand-600: #566173;
+    --color-wild-sand-700: #474f5d;
+    --color-wild-sand-800: #3d444f;
+    --color-wild-sand-900: #363b44;
+    --color-wild-sand-950: #24272d;
+}
