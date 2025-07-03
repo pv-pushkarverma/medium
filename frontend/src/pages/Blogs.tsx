@@ -1,5 +1,6 @@
 import { Appbar } from "../components/Appbar"
 import { BlogCard } from "../components/BlogCard"
+import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks"
 import { stripHtml } from "../utils/htmlStrip";
 
@@ -8,7 +9,14 @@ export const Blogs = () => {
 
     if(loading) {
         return <div>
-            Loading...
+            <Appbar authorName="Pushkar Verma"/>
+
+            <div className="p-2 flex flex-col items-center justify-center">
+                <BlogSkeleton/>
+                <BlogSkeleton/>
+                <BlogSkeleton/>
+                <BlogSkeleton/>
+            </div>
         </div>
     }
 
