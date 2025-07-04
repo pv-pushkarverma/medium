@@ -39,6 +39,25 @@ const config: Config = {
               padding: "2px 4px",
               borderRadius: "0.25rem",
             },
+            'ul, ol': {
+              paddingLeft: '1.25rem',
+              marginTop: '0.5rem',
+              marginBottom: '0.5rem',
+            },
+            li: {
+              marginTop: '0.25rem',
+              marginBottom: '0.25rem',
+            },
+            '.ql-indent-1': { marginLeft: '2rem' },
+            '.ql-indent-2': { marginLeft: '4rem' },
+            '.ql-align-center': { textAlign: 'center' },
+            '.ql-align-right': { textAlign: 'right' },
+            '.ql-syntax': {
+              backgroundColor: '#f3f4f6',
+              padding: '0.25rem 0.5rem',
+              borderRadius: '0.25rem',
+              fontFamily: 'monospace',
+            }
           },
         },
       },
